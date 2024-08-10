@@ -41,10 +41,15 @@ dependencies:
   auto_size_text:
   pie_chart:
   intl:
-  font_awesome_flutter:
-  flutter_expandable_fab: 1.8.1
+#  Hive Database
+  hive:
+  hive_flutter:
+  path_provider:
 
 dev_dependencies:
+#  for Hive Database
+  hive_generator: 
+  build_runner:
   flutter_test:
     sdk: flutter
 

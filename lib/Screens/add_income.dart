@@ -1,10 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:expense_app/Database/boxes.dart';
+import 'package:expense_app/Modals/money_model.dart';
 import 'package:expense_app/utils/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -15,15 +17,16 @@ class AddIncome extends StatelessWidget {
   final _stateController = Get.put(StateController());
   final TextEditingController _categoryController= TextEditingController();
   final TextEditingController _amountController= TextEditingController();
-  final _dateController = TextEditingController(
+  final TextEditingController _detailController= TextEditingController();
+  final TextEditingController _dateController = TextEditingController(
       text: DateFormat('EEE, d MMMM, yyyy, h:mma').format(DateTime.now()));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff00A86B),
+      backgroundColor: const Color(0xff00A86B),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Color(0xff00A86B),
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light,
@@ -37,11 +40,11 @@ class AddIncome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 80,),
+            const SizedBox(height: 80,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text('How much?',style: GoogleFonts.inter(
-                  color: Color(0xffFCFCFC),
+                  color: const Color(0xffFCFCFC),
                   fontSize: 18,
                   fontWeight: FontWeight.w600
               ),),
@@ -55,14 +58,14 @@ class AddIncome extends StatelessWidget {
                   border: InputBorder.none,
                   hintText: '0',
                   hintStyle: GoogleFonts.inter(
-                      color: Color(0xffFCFCFC),
+                      color: const Color(0xffFCFCFC),
                       fontSize: 64,
                       fontWeight: FontWeight.w600
                   ),
                 ),
                 keyboardType: TextInputType.number,
                 style: GoogleFonts.inter(
-                    color: Color(0xffFCFCFC),
+                    color: const Color(0xffFCFCFC),
                     fontSize: 64,
                     fontWeight: FontWeight.w600
                 ),
@@ -71,18 +74,18 @@ class AddIncome extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 16,),
+                  const SizedBox(height: 16,),
                   Text('Category',style: GoogleFonts.inter(
                     color: Colors.black
                   ),),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   TextFormField(
                     controller: _categoryController,
                     keyboardType: TextInputType.none,
@@ -99,19 +102,19 @@ class AddIncome extends StatelessWidget {
                           return makeDismissible(
                             context: context,
                             child: DraggableScrollableSheet(
-                              initialChildSize: 0.5,
-                              minChildSize: 0.5,
-                              maxChildSize: 0.9,
+                              initialChildSize: 0.52,
+                              minChildSize: 0.1,
+                              maxChildSize: 0.52,
                               builder: (context, scrollController) {
                                 return Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                         borderRadius: BorderRadius.vertical(top: Radius.circular(20))
 
                                   ),
                                   child: ListView.builder(
                                     controller: scrollController,
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    padding: const EdgeInsets.symmetric(vertical: 20),
                                     itemCount: Constants.incomeCategoryIcons.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
@@ -128,7 +131,7 @@ class AddIncome extends StatelessWidget {
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.inter(
-                                              color: Color(0xff292B2D),
+                                              color: const Color(0xff292B2D),
                                               fontWeight: FontWeight.w500,
                                             ),
                                           ),
@@ -144,29 +147,30 @@ class AddIncome extends StatelessWidget {
                       );
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,),
+                      suffixIcon: const Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.grey,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
                       ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
                       ),
                       hintText: 'Select Category',
                       hintStyle: GoogleFonts.inter(
-                        color: Color(0xff91919F),
+                        color: const Color(0xff91919F),
                         fontSize: 16,
                       ),
                     ),
                     cursorColor:Colors.transparent,
                   ),
-                  SizedBox(height: 15,),
+                  const SizedBox(height: 15,),
                   Text('Detail',style: GoogleFonts.inter(
                       color: Colors.black
                   ),),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   TextFormField(
+                    controller: _detailController,
                     style: GoogleFonts.inter(
                       color: Colors.black,
                       fontSize: 16,
@@ -174,25 +178,25 @@ class AddIncome extends StatelessWidget {
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.grey,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
                       ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
                       ),
                       hintText: 'Add detail',
                       hintStyle: GoogleFonts.inter(
-                        color: Color(0xff91919F),
+                        color: const Color(0xff91919F),
                         fontSize: 16,
                       ),
                     ),
-                    cursorColor: Color(0xff00A86B),
+                    cursorColor: const Color(0xff00A86B),
                   ),
-                  SizedBox(height: 15,),
+                  const SizedBox(height: 15,),
                   Text('Date',style: GoogleFonts.inter(
                       color: Colors.black
                   ),),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   TextFormField(
                     controller: _dateController,
                     keyboardType: TextInputType.none,
@@ -225,36 +229,45 @@ class AddIncome extends StatelessWidget {
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.grey,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
                       ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
+                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
                       ),
                       hintText: 'Date',
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         Icons.date_range,
                         color: Colors.grey,
                       ),
                       hintStyle: GoogleFonts.inter(
-                        color: Color(0xff91919F),
+                        color: const Color(0xff91919F),
                         fontSize: 16,
                       ),
                     ),
                     cursorColor: Colors.transparent,
                   ),
-                  SizedBox(height: 100,),
+                  const SizedBox(height: 100,),
                   SizedBox(
                     height: 55,
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ButtonStyle(
                           shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
-                          backgroundColor: WidgetStatePropertyAll(Color(0xff00A86B),)
+                          backgroundColor: const WidgetStatePropertyAll(Color(0xff00A86B),)
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        final record=MoneyModel(
+                            category: _categoryController.text,
+                            detail: _detailController.text,
+                            amount: _amountController.text,
+                            amountType: 'income',
+                            date: _dateController.text);
+                          _stateController.submitData(record);
+                        Navigator.pop(context);
+                      },
                       child: Text('Add',style: GoogleFonts.inter(
-                          color: Color(0xffFCFCFC),
+                          color: const Color(0xffFCFCFC),
                           fontSize: 18,
                           fontWeight: FontWeight.w600
                       ),),

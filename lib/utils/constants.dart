@@ -1,6 +1,5 @@
 import 'package:expense_app/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import '../Screens/categories_screen.dart';
 import '../Screens/report_screen.dart';
 
@@ -12,16 +11,16 @@ class IncomeCategory{
 class Constants{
   static List<Tab> getHomeScreenTbs(int index){
     return [
-      Tab(
+      const Tab(
         text: 'Home',
       ),
-      Tab(
+      const Tab(
         text: 'Categories',
       ),
-      Tab(
+      const Tab(
         text: 'Report',
       ),
-      Tab(
+      const Tab(
         text: 'More',
       ),
     ];
@@ -32,7 +31,7 @@ class Constants{
     ReportScreen(),
     const Center(child: Text('More Screen',style: TextStyle(color: Colors.black)),),
   ];
-  static List<IncomeCategory> incomeCategoryIcons = [
+  static List<IncomeCategory> expenseCategoryIcons = [
     IncomeCategory(icon: 'assets/svg/bills.svg', title: 'Bills'),
     IncomeCategory(icon: 'assets/svg/education.svg', title: 'Education'),
     IncomeCategory(icon: 'assets/svg/fun.svg', title: 'Fun'),
@@ -50,7 +49,7 @@ class Constants{
     IncomeCategory(icon: 'assets/svg/work.svg', title: 'Work'),
     IncomeCategory(icon: 'assets/svg/others.svg', title: 'Others'),
   ];
-  static List<IncomeCategory> expenseCategoryIcons = [
+  static List<IncomeCategory> incomeCategoryIcons = [
     IncomeCategory(icon: 'assets/svg/awards.svg', title: 'Awards'),
     IncomeCategory(icon: 'assets/svg/grants.svg', title: 'Grants'),
     IncomeCategory(icon: 'assets/svg/loan.svg', title: 'Loan'),

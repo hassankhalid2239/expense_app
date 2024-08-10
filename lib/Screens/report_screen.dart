@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -16,7 +15,7 @@ class ReportScreen extends StatelessWidget {
         child: SizedBox(
           height: 185,
           child: PieChart(
-            dataMap: {
+            dataMap: const {
               "Income": 2500,
               "Expenses": 1500,
             },

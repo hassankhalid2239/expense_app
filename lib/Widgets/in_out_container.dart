@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +44,7 @@ class InOutContainer extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +52,7 @@ class InOutContainer extends StatelessWidget {
               children: [
                 FittedBox(
                   child: Text(title,style: GoogleFonts.inter(
-                      fontSize: 12,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+                      fontSize: 12,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
                   ),),
                 ),
                 FittedBox(
@@ -61,7 +60,7 @@ class InOutContainer extends StatelessWidget {
                     value,
                     maxLines: 1,
                     style: GoogleFonts.inter(
-                      fontSize: 22,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+                      fontSize: 22,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
                   ),),
                 ),
               ],
