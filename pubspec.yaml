@@ -41,6 +41,8 @@ dependencies:
   auto_size_text:
   pie_chart:
   intl:
+  font_awesome_flutter:
+  flutter_expandable_fab: 1.8.1
 
 dev_dependencies:
   flutter_test:

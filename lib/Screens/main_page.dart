@@ -1,6 +1,4 @@
-import 'package:expense_app/constants.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+import 'package:expense_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,30 +38,22 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
           ),
           elevation: 0,
           forceMaterialTransparency: true,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: SvgPicture.asset(
-              'assets/svg/logo.svg',
-              width: 20,
-              height: 20,
+          leading: FittedBox(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SvgPicture.asset(
+                'assets/svg/logo.svg',
+                width: 20,
+                height: 20,
+              ),
             ),
           ),
-          title: Text(
-            'Expensify',
-            style: Theme.of(context).textTheme.headlineSmall,
+          title: FittedBox(
+            child: Text(
+              'Expensify',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-            )
-          ],
           bottom: TabBar(
             labelStyle: GoogleFonts.inter(
                 color: Color(0xffFD3C4A),
@@ -84,7 +74,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
             controller: _tabController,
             onTap: (index){
               setState(() {
-
               });
             },
           ),
