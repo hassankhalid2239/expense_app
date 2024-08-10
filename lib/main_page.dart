@@ -1,0 +1,99 @@
+import 'package:expense_app/constants.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController=TabController(length: 4, vsync: this);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+            statusBarIconBrightness: Theme.of(context).brightness,
+          ),
+          elevation: 0,
+          forceMaterialTransparency: true,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: SvgPicture.asset(
+              'assets/svg/logo.svg',
+              width: 20,
+              height: 20,
+            ),
+          ),
+          title: Text(
+            'Expensify',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            )
+          ],
+          bottom: TabBar(
+            labelStyle: GoogleFonts.inter(
+                color: Color(0xffFD3C4A),
+                fontSize: 15,
+                fontWeight: FontWeight.w600
+            ),
+            // overlayColor: WidgetStatePropertyAll(Colors.transparent),
+            labelPadding: EdgeInsets.symmetric(horizontal: 10),
+            unselectedLabelColor: Color(0xffC6C6C6),
+            // tabAlignment: TabAlignment.fill,
+            // dividerColor: Color(0xffFD3C4A),
+            indicatorColor: Color(0xffFD3C4A),
+            indicatorWeight: 5,
+            isScrollable: true,
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            tabAlignment: TabAlignment.start,
+            tabs: Constants.getHomeScreenTbs(_tabController.index),
+            controller: _tabController,
+            onTap: (index){
+              setState(() {
+
+              });
+            },
+          ),
+        ),
+        body: TabBarView(
+          controller: _tabController,
+          children: Constants.screens,
+        ),
+      ),
+    );
+  }
+}
