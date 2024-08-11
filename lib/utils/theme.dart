@@ -25,6 +25,11 @@ ThemeData lightThemeData(BuildContext context) {
         labelMedium: GoogleFonts.inter(
         fontSize: 22,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
       ),
+      bodySmall:  GoogleFonts.montserrat(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1),
       headlineSmall: GoogleFonts.inter(
           color:  Color(0xffF76C6A),
           fontSize: 20,
@@ -61,6 +66,11 @@ ThemeData darkThemeData(BuildContext context) {
         labelMedium: GoogleFonts.inter(
             fontSize: 22,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
         ),
+        bodySmall:  GoogleFonts.montserrat(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 1),
         headlineSmall: GoogleFonts.inter(
             color:  Color(0xffF76C6A),
             fontSize: 20,

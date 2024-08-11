@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:expense_app/Database/boxes.dart';
 import 'package:expense_app/Modals/money_model.dart';
 import 'package:expense_app/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +14,14 @@ import '../Controller/state_controller.dart';
 class AddExpenseScreen extends StatelessWidget {
   AddExpenseScreen({super.key});
   final _stateController = Get.put(StateController());
-  final TextEditingController _expenseCategoryController= TextEditingController();
-  final TextEditingController _expenseAmountController= TextEditingController();
-  final TextEditingController _expenseDetailController= TextEditingController();
+  final TextEditingController _expenseCategoryController =
+      TextEditingController();
+  final TextEditingController _expenseAmountController =
+      TextEditingController();
+  final TextEditingController _expenseDetailController =
+      TextEditingController();
   final TextEditingController _expenseDateController = TextEditingController(
-      text: DateFormat('EEE, d MMMM, yyyy, h:mma').format(DateTime.now()));
+      text: DateFormat('EEE, d MMM yyyy, hh:mma').format(DateTime.now()));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,23 +33,27 @@ class AddExpenseScreen extends StatelessWidget {
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light,
         ),
-        title: Text('Add Income',style: GoogleFonts.inter(
-            color: Colors.white,
-            fontSize: 18
-        ),),
+        title: Text(
+          'Add Income',
+          style: GoogleFonts.inter(color: Colors.white, fontSize: 18),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 80,),
+            const SizedBox(
+              height: 80,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text('How much?',style: GoogleFonts.inter(
-                  color: const Color(0xffFCFCFC),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600
-              ),),
+              child: Text(
+                'How much?',
+                style: GoogleFonts.inter(
+                    color: const Color(0xffFCFCFC),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -60,32 +66,37 @@ class AddExpenseScreen extends StatelessWidget {
                   hintStyle: GoogleFonts.inter(
                       color: const Color(0xffFCFCFC),
                       fontSize: 64,
-                      fontWeight: FontWeight.w600
-                  ),
+                      fontWeight: FontWeight.w600),
                 ),
                 keyboardType: TextInputType.number,
                 style: GoogleFonts.inter(
                     color: const Color(0xffFCFCFC),
                     fontSize: 64,
-                    fontWeight: FontWeight.w600
-                ),
+                    fontWeight: FontWeight.w600),
                 cursorColor: Colors.transparent,
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(25),
+                    topLeft: Radius.circular(25)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 16,),
-                  Text('Category',style: GoogleFonts.inter(
-                      color: Colors.black
-                  ),),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    'Category',
+                    style: GoogleFonts.inter(color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   TextFormField(
                     controller: _expenseCategoryController,
                     keyboardType: TextInputType.none,
@@ -93,7 +104,7 @@ class AddExpenseScreen extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 16,
                     ),
-                    onTap: (){
+                    onTap: () {
                       showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
@@ -109,25 +120,37 @@ class AddExpenseScreen extends StatelessWidget {
                                 return Container(
                                   decoration: const BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(top: Radius.circular(20))
-
-                                  ),
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(20))),
                                   child: ListView.builder(
                                     controller: scrollController,
-                                    padding: const EdgeInsets.symmetric(vertical: 20),
-                                    itemCount: Constants.expenseCategoryIcons.length,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    itemCount:
+                                        Constants.expenseCategoryIcons.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 5),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5),
                                         child: ListTile(
-                                          onTap: (){
-                                            _stateController.expenseCategory.value=Constants.expenseCategoryIcons[index].title;
-                                            _expenseCategoryController.text=_stateController.expenseCategory.value;
+                                          onTap: () {
+                                            _stateController
+                                                    .expenseCategory.value =
+                                                Constants
+                                                    .expenseCategoryIcons[index]
+                                                    .title;
+                                            _expenseCategoryController.text =
+                                                _stateController
+                                                    .expenseCategory.value;
                                             Navigator.pop(context);
                                           },
-                                          leading: SvgPicture.asset(Constants.expenseCategoryIcons[index].icon),
+                                          leading: SvgPicture.asset(Constants
+                                              .expenseCategoryIcons[index]
+                                              .icon),
                                           title: Text(
-                                            Constants.expenseCategoryIcons[index].title,
+                                            Constants
+                                                .expenseCategoryIcons[index]
+                                                .title,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.inter(
@@ -147,28 +170,39 @@ class AddExpenseScreen extends StatelessWidget {
                       );
                     },
                     decoration: InputDecoration(
-                      suffixIcon: const Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,),
+                      suffixIcon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                              style: BorderStyle.solid)),
                       hintText: 'Select Category',
                       hintStyle: GoogleFonts.inter(
                         color: const Color(0xff91919F),
                         fontSize: 16,
                       ),
                     ),
-                    cursorColor:Colors.transparent,
+                    cursorColor: Colors.transparent,
                   ),
-                  const SizedBox(height: 15,),
-                  Text('Detail',style: GoogleFonts.inter(
-                      color: Colors.black
-                  ),),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Detail',
+                    style: GoogleFonts.inter(color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   TextFormField(
                     controller: _expenseDetailController,
                     style: GoogleFonts.inter(
@@ -178,12 +212,14 @@ class AddExpenseScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                              style: BorderStyle.solid)),
                       hintText: 'Add detail',
                       hintStyle: GoogleFonts.inter(
                         color: const Color(0xff91919F),
@@ -192,11 +228,16 @@ class AddExpenseScreen extends StatelessWidget {
                     ),
                     cursorColor: const Color(0xff00A86B),
                   ),
-                  const SizedBox(height: 15,),
-                  Text('Date',style: GoogleFonts.inter(
-                      color: Colors.black
-                  ),),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Date',
+                    style: GoogleFonts.inter(color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   TextFormField(
                     controller: _expenseDateController,
                     keyboardType: TextInputType.none,
@@ -207,34 +248,37 @@ class AddExpenseScreen extends StatelessWidget {
                     onTap: () async {
                       DateTime? pickedDate = await showDatePicker(
                           builder: (context, child) => Theme(
-                            data: ThemeData().copyWith(
-                                colorScheme: ColorScheme.light(
-                                    background: Theme.of(context)
-                                        .colorScheme
-                                        .background)),
-                            child: child!,
-                          ),
+                                data: ThemeData().copyWith(
+                                    colorScheme: ColorScheme.light(
+                                        background: Theme.of(context)
+                                            .colorScheme
+                                            .background)),
+                                child: child!,
+                              ),
                           context: context,
                           firstDate: DateTime(1900),
                           lastDate: DateTime(2100));
                       if (pickedDate != null) {
                         _expenseDateController.text =
-                            DateFormat('EEE, d MMMM, yyyy').format(pickedDate);
+                            DateFormat('EEE, d MMM yyyy, hh:mma')
+                                .format(pickedDate);
                       } else {
                         _expenseDateController.text =
-                            DateFormat('EEE, d MMMM, yyyy')
+                            DateFormat('EEE, d MMM yyyy, hh:mma')
                                 .format(DateTime.now());
                       }
                     },
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.grey,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Colors.black,width:2,style: BorderStyle.solid)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                              style: BorderStyle.solid)),
                       hintText: 'Date',
                       suffixIcon: const Icon(
                         Icons.date_range,
@@ -247,47 +291,72 @@ class AddExpenseScreen extends StatelessWidget {
                     ),
                     cursorColor: Colors.transparent,
                   ),
-                  const SizedBox(height: 100,),
+                  const SizedBox(
+                    height: 100,
+                  ),
                   SizedBox(
                     height: 55,
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
-                          backgroundColor: const WidgetStatePropertyAll(Color(0xffFD3C4A),)
-                      ),
-                      onPressed: (){
-                        final record=MoneyModel(
-                            category: _expenseCategoryController.text,
-                            detail: _expenseDetailController.text,
-                            amount: _expenseAmountController.text,
-                            amountType: 'expense',
-                            date: _expenseDateController.text);
-                        _stateController.submitData(record);
-                        Navigator.pop(context);
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16))),
+                          backgroundColor: const WidgetStatePropertyAll(
+                            Color(0xffFD3C4A),
+                          )),
+                      onPressed: () {
+                        if (_expenseAmountController.text.isNotEmpty &&
+                            _expenseCategoryController.text.isNotEmpty) {
+                          final record = MoneyModel(
+                              category: _expenseCategoryController.text,
+                              detail: _expenseDetailController.text,
+                              amount: int.parse(_expenseAmountController.text),
+                              amountType: false,
+                              date: _expenseDateController.text);
+                          _stateController.submitData(record);
+                          Navigator.pop(context);
+                        } else {
+                          Get.snackbar(
+                            'Required',
+                            'All fields are required !',
+                            backgroundColor: Colors.white,
+                            snackPosition: SnackPosition.BOTTOM,
+                            duration: const Duration(seconds: 1),
+                            icon: const Icon(
+                              Icons.warning_amber_rounded,
+                              color: Colors.red,
+                            ),
+                            colorText: Colors.pinkAccent,
+                          );
+                        }
                       },
-                      child: Text('Add',style: GoogleFonts.inter(
-                          color: const Color(0xffFCFCFC),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600
-                      ),),
+                      child: Text(
+                        'Add',
+                        style: GoogleFonts.inter(
+                            color: const Color(0xffFCFCFC),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                   // SizedBox(height: 100,),
-
                 ],
               ),
             ),
           ],
         ),
       ),
-
     );
-
   }
-  Widget makeDismissible({required Widget child,required BuildContext context})=>GestureDetector(
-    behavior: HitTestBehavior.opaque,
-    onTap: ()=>Navigator.of(context).pop(),
-    child: GestureDetector(onTap: (){},child: child,),
-  );
+
+  Widget makeDismissible(
+          {required Widget child, required BuildContext context}) =>
+      GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => Navigator.of(context).pop(),
+        child: GestureDetector(
+          onTap: () {},
+          child: child,
+        ),
+      );
 }

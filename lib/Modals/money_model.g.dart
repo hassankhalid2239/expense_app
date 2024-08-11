@@ -19,8 +19,8 @@ class MoneyModelAdapter extends TypeAdapter<MoneyModel> {
     return MoneyModel(
       category: fields[0] as String,
       detail: fields[1] as String,
-      amount: fields[2] as String,
-      amountType: fields[3] as String,
+      amount: fields[2] as int,
+      amountType: fields[3] as bool,
       date: fields[4] as String,
     );
   }

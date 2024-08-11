@@ -1,5 +1,4 @@
-// ignore_for_file: deprecated_member_use
-
+﻿// ignore_for_file: deprecated_member_use
 import 'package:expense_app/Modals/money_model.dart';
 import 'package:expense_app/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -8,32 +7,76 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
 import '../Controller/state_controller.dart';
 
-class AddIncome extends StatelessWidget {
-  AddIncome({super.key});
+class UpdateRecordScreen extends StatefulWidget {
+  final MoneyModel currentRecord;
+  const UpdateRecordScreen({super.key, required this.currentRecord});
+
+  @override
+  State<UpdateRecordScreen> createState() => _UpdateRecordScreenState();
+}
+
+class _UpdateRecordScreenState extends State<UpdateRecordScreen> {
   final _stateController = Get.put(StateController());
   final TextEditingController _categoryController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _detailController = TextEditingController();
   final TextEditingController _dateController = TextEditingController(
       text: DateFormat('EEE, d MMM yyyy, hh:mma').format(DateTime.now()));
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _amountController.text = widget.currentRecord.amount.toString();
+    _categoryController.text = widget.currentRecord.category;
+    _detailController.text = widget.currentRecord.detail;
+    _dateController.text = widget.currentRecord.date;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _amountController.dispose();
+    _dateController.dispose();
+    _categoryController.dispose();
+    _detailController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff00A86B),
+      backgroundColor: widget.currentRecord.amountType == true
+          ? const Color(0xff00A86B)
+          : const Color(0xffFD3C4A),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Color(0xff00A86B),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: widget.currentRecord.amountType == true
+              ? const Color(0xff00A86B)
+              : const Color(0xffFD3C4A),
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light,
         ),
         title: Text(
-          'Add Income',
+          widget.currentRecord.amountType == true
+              ? 'Edit Income'
+              : 'Edit Expense',
           style: GoogleFonts.inter(color: Colors.white, fontSize: 18),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+              onPressed: () {
+                bottomSheet(context);
+              },
+              icon: SvgPicture.asset('assets/svg/delete.svg'),
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -55,7 +98,6 @@ class AddIncome extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
-                autofocus: true,
                 controller: _amountController,
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -123,29 +165,61 @@ class AddIncome extends StatelessWidget {
                                     controller: scrollController,
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 20),
-                                    itemCount:
-                                        Constants.incomeCategoryIcons.length,
+                                    itemCount: widget
+                                                .currentRecord.amountType ==
+                                            true
+                                        ? Constants.incomeCategoryIcons.length
+                                        : Constants.expenseCategoryIcons.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 5),
                                         child: ListTile(
                                           onTap: () {
-                                            _stateController
-                                                    .incomeCategory.value =
-                                                Constants
-                                                    .incomeCategoryIcons[index]
-                                                    .title;
-                                            _categoryController.text =
-                                                _stateController
-                                                    .incomeCategory.value;
-                                            Navigator.pop(context);
+                                            if (widget
+                                                .currentRecord.amountType) {
+                                              _stateController
+                                                      .incomeCategory.value =
+                                                  Constants
+                                                      .incomeCategoryIcons[
+                                                          index]
+                                                      .title;
+                                              _categoryController.text =
+                                                  _stateController
+                                                      .incomeCategory.value;
+                                              Navigator.pop(context);
+                                            } else {
+                                              _stateController
+                                                      .expenseCategory.value =
+                                                  Constants
+                                                      .expenseCategoryIcons[
+                                                          index]
+                                                      .title;
+                                              _categoryController.text =
+                                                  _stateController
+                                                      .expenseCategory.value;
+                                              Navigator.pop(context);
+                                            }
                                           },
-                                          leading: SvgPicture.asset(Constants
-                                              .incomeCategoryIcons[index].icon),
+                                          leading: SvgPicture.asset(widget
+                                                      .currentRecord
+                                                      .amountType ==
+                                                  true
+                                              ? Constants
+                                                  .incomeCategoryIcons[index]
+                                                  .icon
+                                              : Constants
+                                                  .expenseCategoryIcons[index]
+                                                  .icon),
                                           title: Text(
-                                            Constants.incomeCategoryIcons[index]
-                                                .title,
+                                            widget.currentRecord.amountType ==
+                                                    true
+                                                ? Constants
+                                                    .incomeCategoryIcons[index]
+                                                    .title
+                                                : Constants
+                                                    .expenseCategoryIcons[index]
+                                                    .title,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.inter(
@@ -296,19 +370,21 @@ class AddIncome extends StatelessWidget {
                       style: ButtonStyle(
                           shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16))),
-                          backgroundColor: const WidgetStatePropertyAll(
-                            Color(0xff00A86B),
+                          backgroundColor: WidgetStatePropertyAll(
+                            widget.currentRecord.amountType == true
+                                ? const Color(0xff00A86B)
+                                : const Color(0xffFD3C4A),
                           )),
                       onPressed: () {
                         if (_amountController.text.isNotEmpty &&
                             _categoryController.text.isNotEmpty) {
-                          final record = MoneyModel(
-                              category: _categoryController.text,
-                              detail: _detailController.text,
-                              amount: int.parse(_amountController.text),
-                              amountType: true,
-                              date: _dateController.text);
-                          _stateController.submitData(record);
+                          widget.currentRecord.amount =
+                              int.parse(_amountController.text);
+                          widget.currentRecord.category =
+                              _categoryController.text;
+                          widget.currentRecord.detail = _detailController.text;
+                          widget.currentRecord.date = _dateController.text;
+                          widget.currentRecord.save();
                           Navigator.pop(context);
                         } else {
                           Get.snackbar(
@@ -326,7 +402,7 @@ class AddIncome extends StatelessWidget {
                         }
                       },
                       child: Text(
-                        'Add',
+                        'Save',
                         style: GoogleFonts.inter(
                             color: const Color(0xffFCFCFC),
                             fontSize: 18,
@@ -341,6 +417,75 @@ class AddIncome extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void bottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return SizedBox(
+          height: 150,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _stateController.deleteData(widget.currentRecord);
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                        // Get.back();
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              const WidgetStatePropertyAll(Colors.white),
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)))),
+                      child: Text(
+                        'Yes',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 17,
+                            letterSpacing: 5,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xffF76C6A)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              const WidgetStatePropertyAll(Colors.white),
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)))),
+                      child: Text('No',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 17,
+                              letterSpacing: 5,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 

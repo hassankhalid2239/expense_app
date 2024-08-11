@@ -9,9 +9,9 @@ class MoneyModel extends HiveObject{
   @HiveField(1)
   String detail;
   @HiveField(2)
-  String amount;
+  int amount;
   @HiveField(3)
-  String amountType;
+  bool amountType;
   @HiveField(4)
   String date;
 

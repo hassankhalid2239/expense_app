@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController=TabController(length: 4, vsync: this);
+    _tabController=TabController(length: 3, vsync: this);
   }
   @override
   void dispose() {
@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
