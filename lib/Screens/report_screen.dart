@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:pie_chart/pie_chart.dart';
-
 import '../Database/boxes.dart';
 import '../Modals/money_model.dart';
 import '../Widgets/linear_progress_indicator.dart';
@@ -47,11 +46,7 @@ class ReportScreen extends StatelessWidget {
                       child: FittedBox(
                         child: Text(
                           total.toString(),
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 32,
-                          ),
+                          style: Theme.of(context).textTheme.labelLarge
                         ),
                       ),
                     ),
@@ -96,10 +91,7 @@ class ReportScreen extends StatelessWidget {
                     'Income',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.inter(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   trailing: FittedBox(
                     child: Text(
@@ -131,10 +123,7 @@ class ReportScreen extends StatelessWidget {
                     'Expense',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.inter(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   trailing: Text(
                     totalExpense.toString(),

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'Database/prefrences.dart';
 import 'Screens/main_page.dart';
 
 
@@ -15,12 +16,20 @@ void main() async{
   Hive.init(directory.path);
   Hive.registerAdapter(MoneyModelAdapter());
   await Hive.openBox<MoneyModel>('Records');
-  runApp(const MyApp());
+  var ref = await SharedPreferences.getInstance();
+  String theme;
+  if (ref.getString('theme') != null) {
+    theme = ref.getString('theme')!;
+  } else {
+    theme = 'System Default';
+  }
+  runApp(MyApp(theme: theme,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key,required this.theme});
+  final String theme;
+  final pref = SharedPref();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,7 +38,11 @@ class MyApp extends StatelessWidget {
       title: 'Expense App',
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-      themeMode: ThemeMode.light,
+      themeMode: theme == 'Light'
+          ? ThemeMode.light
+          : theme == 'Dark'
+          ? ThemeMode.dark
+          : ThemeMode.system,
       home: const MainPage(),
     );
   }

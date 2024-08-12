@@ -35,11 +35,28 @@ ThemeData lightThemeData(BuildContext context) {
           fontSize: 20,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.5
-      )
+      ),
+      labelLarge: GoogleFonts.inter(
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+        fontSize: 32,
+      ),
+      titleMedium: GoogleFonts.inter(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w600),
+      displaySmall: GoogleFonts.inter(
+          color: Colors.black,
+          fontWeight: FontWeight.w500,
+          fontSize: 16
+      ),
+      bodyMedium: GoogleFonts.dmSans(
+          color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
     ),
     colorScheme: const ColorScheme.dark().copyWith(
       onPrimary: Color(0xffF76C6A),
         tertiary:Colors.black,
+        surfaceBright: Color(0xffF2F2F2),
         tertiaryContainer: Color(0xff00A86B)
     ),
   );
@@ -76,10 +93,27 @@ ThemeData darkThemeData(BuildContext context) {
             fontSize: 20,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.5
-        )
+        ),
+      labelLarge: GoogleFonts.inter(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 32,
+      ),
+      titleMedium: GoogleFonts.inter(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w600),
+      displaySmall: GoogleFonts.inter(
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+          fontSize: 16
+      ),
+      bodyMedium: GoogleFonts.dmSans(
+          color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
     ),
     colorScheme: const ColorScheme.dark().copyWith(
       tertiary:Colors.white,
+        surfaceBright: Color(0xff252525),
         onPrimary: Color(0xffF76C6A),
       tertiaryContainer: Color(0xff00A86B)
     ),

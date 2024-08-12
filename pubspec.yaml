@@ -41,6 +41,7 @@ dependencies:
   auto_size_text:
   pie_chart:
   intl:
+  shared_preferences:
 #  Hive Database
   hive:
   hive_flutter:

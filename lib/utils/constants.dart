@@ -1,4 +1,5 @@
 import 'package:expense_app/Screens/home_screen.dart';
+import 'package:expense_app/Screens/more_screen.dart';
 import 'package:flutter/material.dart';
 import '../Screens/report_screen.dart';
 
@@ -24,8 +25,7 @@ class Constants{
   static List<Widget> screens=[
     HomeScreen(),
     ReportScreen(),
-    const Center(child: Text('More Screen',style: TextStyle(color: Colors.black)),),
-  ];
+    MoreScreen()];
   static List<IncomeCategory> expenseCategoryIcons = [
     IncomeCategory(icon: 'assets/svg/bills.svg', title: 'Bills'),
     IncomeCategory(icon: 'assets/svg/education.svg', title: 'Education'),

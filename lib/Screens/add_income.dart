@@ -8,7 +8,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
 import '../Controller/state_controller.dart';
 
 class AddIncome extends StatelessWidget {
@@ -75,8 +74,8 @@ class AddIncome extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color:Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(25),
                     topLeft: Radius.circular(25)),
@@ -89,7 +88,7 @@ class AddIncome extends StatelessWidget {
                   ),
                   Text(
                     'Category',
-                    style: GoogleFonts.inter(color: Colors.black),
+                    style: GoogleFonts.inter(color: Theme.of(context).colorScheme.tertiary),
                   ),
                   const SizedBox(
                     height: 10,
@@ -98,7 +97,7 @@ class AddIncome extends StatelessWidget {
                     controller: _categoryController,
                     keyboardType: TextInputType.none,
                     style: GoogleFonts.inter(
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.tertiary,
                       fontSize: 16,
                     ),
                     onTap: () {
@@ -115,8 +114,8 @@ class AddIncome extends StatelessWidget {
                               maxChildSize: 0.52,
                               builder: (context, scrollController) {
                                 return Container(
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
+                                  decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.surfaceBright,
                                       borderRadius: BorderRadius.vertical(
                                           top: Radius.circular(20))),
                                   child: ListView.builder(
@@ -149,7 +148,7 @@ class AddIncome extends StatelessWidget {
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.inter(
-                                              color: const Color(0xff292B2D),
+                                              color: Theme.of(context).colorScheme.tertiary,
                                               fontWeight: FontWeight.w500,
                                             ),
                                           ),
@@ -176,8 +175,8 @@ class AddIncome extends StatelessWidget {
                               color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(
-                              color: Colors.black,
+                          borderSide:  BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
                               width: 2,
                               style: BorderStyle.solid)),
                       hintText: 'Select Category',
@@ -193,7 +192,7 @@ class AddIncome extends StatelessWidget {
                   ),
                   Text(
                     'Detail',
-                    style: GoogleFonts.inter(color: Colors.black),
+                    style: GoogleFonts.inter(color: Theme.of(context).colorScheme.tertiary),
                   ),
                   const SizedBox(
                     height: 10,
@@ -201,7 +200,7 @@ class AddIncome extends StatelessWidget {
                   TextFormField(
                     controller: _detailController,
                     style: GoogleFonts.inter(
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.tertiary,
                       fontSize: 16,
                     ),
                     decoration: InputDecoration(
@@ -211,8 +210,8 @@ class AddIncome extends StatelessWidget {
                               color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(
-                              color: Colors.black,
+                          borderSide:  BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
                               width: 2,
                               style: BorderStyle.solid)),
                       hintText: 'Add detail',
@@ -228,7 +227,7 @@ class AddIncome extends StatelessWidget {
                   ),
                   Text(
                     'Date',
-                    style: GoogleFonts.inter(color: Colors.black),
+                    style: GoogleFonts.inter(color: Theme.of(context).colorScheme.tertiary),
                   ),
                   const SizedBox(
                     height: 10,
@@ -237,7 +236,7 @@ class AddIncome extends StatelessWidget {
                     controller: _dateController,
                     keyboardType: TextInputType.none,
                     style: GoogleFonts.inter(
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.tertiary,
                       fontSize: 16,
                     ),
                     onTap: () async {
@@ -270,8 +269,8 @@ class AddIncome extends StatelessWidget {
                               color: Colors.grey, style: BorderStyle.solid)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(
-                              color: Colors.black,
+                          borderSide:  BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
                               width: 2,
                               style: BorderStyle.solid)),
                       hintText: 'Date',

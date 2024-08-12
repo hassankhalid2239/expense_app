@@ -107,10 +107,7 @@ class TransactionScreen extends StatelessWidget {
                     transactionType == true
                         ? 'Total incomes'
                         : 'Total expenses',
-                    style: GoogleFonts.inter(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   trailing: Text(
                     transactionType == true
@@ -131,7 +128,8 @@ class TransactionScreen extends StatelessWidget {
                     ? Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Obx(() {
-                          return ListView.builder(
+                          return ListView.separated(
+                            separatorBuilder: (context, index) => Divider(color: Theme.of(context).scaffoldBackgroundColor,height: 1,),
                             shrinkWrap: true,
                             reverse:
                                 _stateController.selectedIncomeValue.value == 1
@@ -153,6 +151,8 @@ class TransactionScreen extends StatelessWidget {
                                   }
                                 }
                                 return ListTile(
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                                  tileColor:  Theme.of(context).colorScheme.surfaceBright,
                                   onTap: () {
                                     Get.to(UpdateRecordScreen(
                                       currentRecord: data[index],
@@ -177,10 +177,7 @@ class TransactionScreen extends StatelessWidget {
                                         data[index].category,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.inter(
-                                          color: const Color(0xff292B2D),
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                        style: Theme.of(context).textTheme.displaySmall
                                       ),
                                     ],
                                   ),

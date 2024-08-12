@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
             labelPadding: const EdgeInsets.symmetric(horizontal: 10),
             unselectedLabelColor: const Color(0xffC6C6C6),
             // tabAlignment: TabAlignment.fill,
-            // dividerColor: Color(0xffFD3C4A),
+            dividerColor: Theme.of(context).scaffoldBackgroundColor,
             indicatorColor: const Color(0xffFD3C4A),
             indicatorWeight: 5,
             isScrollable: true,

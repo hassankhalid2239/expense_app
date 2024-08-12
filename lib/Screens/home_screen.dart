@@ -39,17 +39,16 @@ class HomeScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 24,),
                 Align(
                   alignment: Alignment.center,
                   child: Text(
                     'Account Balance',
                     maxLines: 1,
-                    style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff91919F)),
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
+                SizedBox(height: 10,),
                 Align(
                   alignment: Alignment.center,
                   child: FittedBox(
@@ -57,13 +56,11 @@ class HomeScreen extends StatelessWidget {
                       total.toString(),
                       // '9100',
                       maxLines: 1,
-                      style: GoogleFonts.inter(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
+                      style: Theme.of(context).textTheme.titleLarge
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
@@ -112,13 +109,13 @@ class HomeScreen extends StatelessWidget {
                     contentPadding: EdgeInsets.zero,
                     title: Text(
                       'All Transactions',
-                      style: GoogleFonts.inter(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleMedium
                     ),
                     trailing: PopupMenuButton(
                       tooltip: 'filter',
+                      iconSize: 28,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                       position: PopupMenuPosition.under,
@@ -183,7 +180,8 @@ class HomeScreen extends StatelessWidget {
                 ),
                 data.isNotEmpty
                     ? Obx(() {
-                        return ListView.builder(
+                        return ListView.separated(
+                          separatorBuilder: (context, index) => Divider(color: Theme.of(context).scaffoldBackgroundColor,height: 1,),
                           shrinkWrap: true,
                           reverse: _stateController.selectedValue.value == 1
                               ? true
@@ -201,6 +199,8 @@ class HomeScreen extends StatelessWidget {
                               }
                             }
                             return ListTile(
+                              contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                              tileColor:  Theme.of(context).colorScheme.surfaceBright,
                               onTap: () {
                                 Get.to(UpdateRecordScreen(
                                   currentRecord: data[index],
@@ -224,10 +224,7 @@ class HomeScreen extends StatelessWidget {
                                     data[index].category,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.inter(
-                                      color: const Color(0xff292B2D),
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    style: Theme.of(context).textTheme.displaySmall
                                   ),
                                 ],
                               ),
@@ -262,8 +259,7 @@ class HomeScreen extends StatelessWidget {
                     : Center(
                         child: Text(
                           "There's no data!",
-                          style: GoogleFonts.inter(
-                              color: Colors.black, fontSize: 18),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       )
               ],
@@ -273,7 +269,7 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         height: 70,
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surfaceBright,
         child: Row(
           children: [
             Expanded(
@@ -296,6 +292,7 @@ class HomeScreen extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.inter(
                         color: Colors.white,
+                        fontSize: 15,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1),
                   ),
@@ -323,6 +320,7 @@ class HomeScreen extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.inter(
                         color: Colors.white,
+                        fontSize: 15,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1),
                   ),
