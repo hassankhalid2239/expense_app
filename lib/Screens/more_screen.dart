@@ -3,9 +3,7 @@
 import 'package:expense_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Database/prefrences.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({super.key});
@@ -15,7 +13,6 @@ class MoreScreen extends StatefulWidget {
 }
 
 class _MoreScreenState extends State<MoreScreen> {
-  var pref = SharedPref();
   String? theme;
 
   @override
@@ -56,10 +53,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     value: 'Light',
                     groupValue: theme,
                     onChanged: (value) {
-                      setState(() {
-                        pref.setData(value);
-                        theme = value.toString();
-                      });
+                      Get.changeTheme(lightThemeData(context));
 
                       // restartApp();
                     }),
@@ -75,10 +69,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     value: 'Dark',
                     groupValue: theme,
                     onChanged: (value) {
-                      setState(() {
-                        pref.setData(value);
-                        theme = value.toString();
-                      });
+                      Get.changeTheme(darkThemeData(context));
 
                       // restartApp();
                     }),
@@ -94,10 +85,6 @@ class _MoreScreenState extends State<MoreScreen> {
                     value: 'System Default',
                     groupValue: theme,
                     onChanged: (value) {
-                      setState(() {
-                        pref.setData(value);
-                        theme = value.toString();
-                      });
                       // restartApp();
                     }),
               ],
