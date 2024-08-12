@@ -1,5 +1,6 @@
 import 'package:expense_app/Modals/money_model.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 import '../Database/boxes.dart';
 
@@ -10,7 +11,11 @@ class StateController extends GetxController{
    RxString expenseTime=''.obs;
    var selectedValue = 1.obs;
    var selectedIncomeValue = 1.obs;
+   RxString selectedTheme='System Default'.obs;
 
+   void updateSelectedTheme(String value) {
+      selectedTheme.value = value;
+   }
    void updateSelectedValue(int value) {
       selectedValue.value = value;
    }

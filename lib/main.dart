@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Controller/state_controller.dart';
 import 'Screens/main_page.dart';
 
 
@@ -15,11 +16,12 @@ void main() async{
   Hive.init(directory.path);
   Hive.registerAdapter(MoneyModelAdapter());
   await Hive.openBox<MoneyModel>('Records');
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final _stateController= Get.put(StateController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Expense App',
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-
+      themeMode: ThemeMode.system,
       home: const MainPage(),
     );
   }

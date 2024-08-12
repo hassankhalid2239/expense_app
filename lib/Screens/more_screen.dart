@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:expense_app/Controller/state_controller.dart';
 import 'package:expense_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,20 +14,8 @@ class MoreScreen extends StatefulWidget {
 }
 
 class _MoreScreenState extends State<MoreScreen> {
-  String? theme;
+  final _stateController= Get.put(StateController());
 
-  @override
-  void initState() {
-    super.initState();
-    getValue();
-  }
-
-  getValue() async {
-    var re = await SharedPreferences.getInstance();
-    setState(() {
-      theme = re.getString('theme');
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,10 +40,10 @@ class _MoreScreenState extends State<MoreScreen> {
                     fillColor: const MaterialStatePropertyAll(
                         Color(0xffFD3C4A)),
                     value: 'Light',
-                    groupValue: theme,
+                    groupValue: _stateController.selectedTheme.value,
                     onChanged: (value) {
                       Get.changeTheme(lightThemeData(context));
-
+                      _stateController.updateSelectedTheme(value!);
                       // restartApp();
                     }),
                 RadioListTile(
@@ -67,9 +56,10 @@ class _MoreScreenState extends State<MoreScreen> {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     value: 'Dark',
-                    groupValue: theme,
+                    groupValue: _stateController.selectedTheme.value,
                     onChanged: (value) {
                       Get.changeTheme(darkThemeData(context));
+                      _stateController.updateSelectedTheme(value!);
 
                       // restartApp();
                     }),
@@ -83,8 +73,9 @@ class _MoreScreenState extends State<MoreScreen> {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     value: 'System Default',
-                    groupValue: theme,
+                    groupValue: _stateController.selectedTheme.value,
                     onChanged: (value) {
+                      _stateController.updateSelectedTheme(value!);
                       // restartApp();
                     }),
               ],
