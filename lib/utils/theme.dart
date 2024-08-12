@@ -13,17 +13,17 @@ ThemeData lightThemeData(BuildContext context) {
     textTheme: TextTheme(
       titleSmall: GoogleFonts.inter(
           fontSize: 14,fontWeight: FontWeight.w600,
-          color: Color(0xff91919F)
+          color: const Color(0xff91919F)
       ),
       titleLarge: GoogleFonts.inter(
           fontSize: 40,fontWeight: FontWeight.w600,
           color: Colors.black
       ),
       labelSmall: GoogleFonts.inter(
-        fontSize: 14,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+        fontSize: 14,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
       ),
         labelMedium: GoogleFonts.inter(
-        fontSize: 22,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+        fontSize: 22,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
       ),
       bodySmall:  GoogleFonts.montserrat(
           color: Colors.black,
@@ -31,8 +31,14 @@ ThemeData lightThemeData(BuildContext context) {
           fontWeight: FontWeight.w600,
           letterSpacing: 1),
       headlineSmall: GoogleFonts.inter(
-          color:  Color(0xffF76C6A),
+          color:  const Color(0xffF76C6A),
           fontSize: 20,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.5
+      ),
+      headlineLarge: GoogleFonts.inter(
+          color:  Colors.black,
+          fontSize: 32,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.5
       ),
@@ -54,10 +60,10 @@ ThemeData lightThemeData(BuildContext context) {
           color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
     ),
     colorScheme: const ColorScheme.dark().copyWith(
-      onPrimary: Color(0xffF76C6A),
+      onPrimary: const Color(0xffF76C6A),
         tertiary:Colors.black,
-        surfaceBright: Color(0xffF2F2F2),
-        tertiaryContainer: Color(0xff00A86B)
+        surfaceBright: const Color(0xffF2F2F2),
+        tertiaryContainer: const Color(0xff00A86B)
     ),
   );
 }
@@ -71,17 +77,17 @@ ThemeData darkThemeData(BuildContext context) {
     textTheme: TextTheme(
       titleSmall: GoogleFonts.inter(
           fontSize: 14,fontWeight: FontWeight.w600,
-          color: Color(0xff91919F)
+          color: const Color(0xff91919F)
       ),
       titleLarge: GoogleFonts.inter(
           fontSize: 40,fontWeight: FontWeight.w600,
           color: Colors.white
       ),
         labelSmall: GoogleFonts.inter(
-            fontSize: 14,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+            fontSize: 14,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
         ),
         labelMedium: GoogleFonts.inter(
-            fontSize: 22,fontWeight: FontWeight.w600,color: Color(0xffFCFCFC)
+            fontSize: 22,fontWeight: FontWeight.w600,color: const Color(0xffFCFCFC)
         ),
         bodySmall:  GoogleFonts.montserrat(
             color: Colors.white,
@@ -89,11 +95,17 @@ ThemeData darkThemeData(BuildContext context) {
             fontWeight: FontWeight.w600,
             letterSpacing: 1),
         headlineSmall: GoogleFonts.inter(
-            color:  Color(0xffF76C6A),
+            color:  const Color(0xffF76C6A),
             fontSize: 20,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.5
         ),
+      headlineLarge: GoogleFonts.inter(
+          color:  Colors.white,
+          fontSize: 32,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.5
+      ),
       labelLarge: GoogleFonts.inter(
         fontWeight: FontWeight.bold,
         color: Colors.white,
@@ -113,9 +125,9 @@ ThemeData darkThemeData(BuildContext context) {
     ),
     colorScheme: const ColorScheme.dark().copyWith(
       tertiary:Colors.white,
-        surfaceBright: Color(0xff252525),
-        onPrimary: Color(0xffF76C6A),
-      tertiaryContainer: Color(0xff00A86B)
+        surfaceBright: const Color(0xff252525),
+        onPrimary: const Color(0xffF76C6A),
+      tertiaryContainer: const Color(0xff00A86B)
     ),
   );
 }

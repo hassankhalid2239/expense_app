@@ -1,11 +1,11 @@
 import 'package:expense_app/Modals/money_model.dart';
+import 'package:expense_app/Screens/splash_screen.dart';
 import 'package:expense_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'Controller/state_controller.dart';
+import 'Controller/theme_controller.dart';
 import 'Screens/main_page.dart';
 
 
@@ -16,13 +16,13 @@ void main() async{
   Hive.init(directory.path);
   Hive.registerAdapter(MoneyModelAdapter());
   await Hive.openBox<MoneyModel>('Records');
-  runApp( MyApp());
+  final themeController = Get.put(ThemeController());
+  await themeController.loadThemeFromPreferences();
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final _stateController= Get.put(StateController());
-  // This widget is the root of your application.
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
       title: 'Expense App',
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-      themeMode: ThemeMode.system,
-      home: const MainPage(),
+      themeMode: Get.find<ThemeController>().themeMode,
+      home: const SplashScreen(),
     );
   }
 }

@@ -42,7 +42,7 @@ class TransactionScreen extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             position: PopupMenuPosition.under,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surfaceBright,
             // color: Theme.of(context).colorScheme.surfaceBright,
             icon: Icon(
               Icons.filter_alt_outlined,
@@ -151,7 +151,7 @@ class TransactionScreen extends StatelessWidget {
                                   }
                                 }
                                 return ListTile(
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                                   tileColor:  Theme.of(context).colorScheme.surfaceBright,
                                   onTap: () {
                                     Get.to(UpdateRecordScreen(

@@ -76,7 +76,7 @@ class AddIncome extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               decoration: BoxDecoration(
                 color:Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(25),
                     topLeft: Radius.circular(25)),
               ),
@@ -116,7 +116,7 @@ class AddIncome extends StatelessWidget {
                                 return Container(
                                   decoration: BoxDecoration(
                                       color: Theme.of(context).colorScheme.surfaceBright,
-                                      borderRadius: BorderRadius.vertical(
+                                      borderRadius: const BorderRadius.vertical(
                                           top: Radius.circular(20))),
                                   child: ListView.builder(
                                     controller: scrollController,

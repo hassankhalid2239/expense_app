@@ -1,6 +1,5 @@
 import 'package:expense_app/Modals/money_model.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 
 import '../Database/boxes.dart';
 
@@ -36,13 +35,3 @@ class StateController extends GetxController{
       record.save();
    }
 }
-
-
-/*
-   void selectIncomeCategory(String selectedValue){
-     incomeCategory.value=selectedValue;
-   }
-   void getIncomeTime(String selectedValue){
-     incomeTime.value=selectedValue;
-   }
- */

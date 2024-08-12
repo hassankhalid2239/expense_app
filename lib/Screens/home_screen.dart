@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 24,),
+                const SizedBox(height: 24,),
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Align(
                   alignment: Alignment.center,
                   child: FittedBox(
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                       position: PopupMenuPosition.under,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.surfaceBright,
                       // color: Theme.of(context).colorScheme.surfaceBright,
                       icon: Icon(
                         Icons.filter_alt_outlined,
@@ -199,7 +199,7 @@ class HomeScreen extends StatelessWidget {
                               }
                             }
                             return ListTile(
-                              contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                               tileColor:  Theme.of(context).colorScheme.surfaceBright,
                               onTap: () {
                                 Get.to(UpdateRecordScreen(

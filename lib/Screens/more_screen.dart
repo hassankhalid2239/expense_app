@@ -1,20 +1,14 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:expense_app/Controller/state_controller.dart';
-import 'package:expense_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../Controller/theme_controller.dart';
 
-class MoreScreen extends StatefulWidget {
-  const MoreScreen({super.key});
+class MoreScreen extends StatelessWidget {
+  MoreScreen({super.key});
+  final ThemeController themeController = Get.find<ThemeController>();
 
-  @override
-  State<MoreScreen> createState() => _MoreScreenState();
-}
 
-class _MoreScreenState extends State<MoreScreen> {
-  final _stateController= Get.put(StateController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +16,7 @@ class _MoreScreenState extends State<MoreScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 24,),
+            const SizedBox(height: 24,),
             ExpansionTile(
               backgroundColor: Theme.of(context).colorScheme.surfaceBright,
               collapsedBackgroundColor: Theme.of(context).colorScheme.surfaceBright,
@@ -30,54 +24,43 @@ class _MoreScreenState extends State<MoreScreen> {
               iconColor:Theme.of(context).colorScheme.tertiary,
               collapsedIconColor: Theme.of(context).colorScheme.tertiary,
               children: [
-                RadioListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      'Light',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+                Obx((){
+                  return RadioListTile<ThemeMode>(
+                    title: Text('Light Mode',style: Theme.of(context).textTheme.bodyMedium,),
                     activeColor: const Color(0xffFD3C4A),
+                    contentPadding: EdgeInsets.zero,
                     fillColor: const MaterialStatePropertyAll(
                         Color(0xffFD3C4A)),
-                    value: 'Light',
-                    groupValue: _stateController.selectedTheme.value,
-                    onChanged: (value) {
-                      Get.changeTheme(lightThemeData(context));
-                      _stateController.updateSelectedTheme(value!);
-                      // restartApp();
-                    }),
-                RadioListTile(
+                    value: ThemeMode.light,
+                    groupValue: themeController.themeMode,
+                    onChanged: (value) => themeController.changeThemeMode(value!),
+                  );
+                }),
+                Obx((){
+                  return RadioListTile<ThemeMode>(
+                    title: Text('Dark Mode',style: Theme.of(context).textTheme.bodyMedium,),
                     activeColor: const Color(0xffFD3C4A),
+                    contentPadding: EdgeInsets.zero,
                     fillColor: const MaterialStatePropertyAll(
                         Color(0xffFD3C4A)),
+                    value: ThemeMode.dark,
+                    groupValue: themeController.themeMode,
+                    onChanged: (value) => themeController.changeThemeMode(value!),
+                  );
+                }),
+                Obx((){
+                  return RadioListTile<ThemeMode>(
+                    title: Text('System Mode',style: Theme.of(context).textTheme.bodyMedium,),
+                    value: ThemeMode.system,
+                    activeColor: const Color(0xffFD3C4A),
                     contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      'Dark',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    value: 'Dark',
-                    groupValue: _stateController.selectedTheme.value,
-                    onChanged: (value) {
-                      Get.changeTheme(darkThemeData(context));
-                      _stateController.updateSelectedTheme(value!);
+                    fillColor: const MaterialStatePropertyAll(
+                        Color(0xffFD3C4A)),
+                    groupValue: themeController.themeMode,
+                    onChanged: (value) => themeController.changeThemeMode(value!),
+                  );
+                }),
 
-                      // restartApp();
-                    }),
-                RadioListTile(
-                    activeColor: const Color(0xffFD3C4A),
-                    fillColor: const MaterialStatePropertyAll(
-                        Color(0xffFD3C4A)),
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      'System Default',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    value: 'System Default',
-                    groupValue: _stateController.selectedTheme.value,
-                    onChanged: (value) {
-                      _stateController.updateSelectedTheme(value!);
-                      // restartApp();
-                    }),
               ],
               onExpansionChanged: (value){},
             )
