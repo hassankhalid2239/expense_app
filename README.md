@@ -51,8 +51,9 @@ The Expense Tracker App is a comprehensive tool designed to help users manage th
 
 ## Video
 - **Screen Recording**: Watch a screen recording demonstrating the app's features
--
-- https://github.com/user-attachments/assets/90ff2741-a90f-4ea6-babe-eb1753d2ec31
+
+https://github.com/user-attachments/assets/ed226d8b-0f62-43ff-8765-7c496b107569
+
 
 ## Contributing
 If you would like to contribute to this project, please follow these steps:
