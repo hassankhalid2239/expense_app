@@ -50,7 +50,9 @@ The Expense Tracker App is a comprehensive tool designed to help users manage th
 6. Toggle between light and dark modes using the settings.
 
 ## Video
-- **Screen Recording**: Watch a screen recording demonstrating the app's features ![4p9p4o](https://github.com/user-attachments/assets/90ff2741-a90f-4ea6-babe-eb1753d2ec31).
+- **Screen Recording**: Watch a screen recording demonstrating the app's features
+-
+- https://github.com/user-attachments/assets/90ff2741-a90f-4ea6-babe-eb1753d2ec31
 
 ## Contributing
 If you would like to contribute to this project, please follow these steps:
