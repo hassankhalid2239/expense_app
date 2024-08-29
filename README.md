@@ -51,12 +51,9 @@ The Expense Tracker App is a comprehensive tool designed to help users manage th
 
 ## Screenshots
 - **Screenshots**: See a screenshots demonstrating the app's features
-<img src="https://github.com/user-attachments/assets/a40d825f-76c6-46d1-b3c9-028aac212647" alt="Home Screen" width="125" height="250">
-<img src="https://github.com/user-attachments/assets/38c61222-6962-4ec9-8742-07a0f094c4ac" alt="Add Expense Screen" width="125" height="250">
-<img src="https://github.com/user-attachments/assets/ace5ae20-5b7b-4f99-911f-f6dd7d56ddeb" alt="Add Income Screen" width="125" height="250">
-<img src="https://github.com/user-attachments/assets/3eb542d3-9d1d-4b9c-87f7-26ad736a35dc" alt="Update Screen" width="125" height="250">
-<img src="https://github.com/user-attachments/assets/64c7edbe-99ab-4349-9a3a-d54a1debaa29" alt="Update Screen" width="125" height="250">
-<img src="https://github.com/user-attachments/assets/d281a0d1-15dd-4e28-99bf-bd71f52768a7" alt="Add  Screen" width="125" height="250">
+<img src="https://github.com/user-attachments/assets/8c86b839-5219-4f50-ac79-522a887b8172" alt="Add Screen" width="125" height="250">
+<img src="https://github.com/user-attachments/assets/9ec8c8c8-d739-4b75-9dc5-91b0ad882e4d" alt="Home Screen" width="125" height="250">
+<img src="https://github.com/user-attachments/assets/6c3b996a-039e-4b27-ac8b-d9b8b5fbec92" alt="Update Screen" width="125" height="250">
 
 
 ## Contributing
